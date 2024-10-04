@@ -1,0 +1,258 @@
+//variaveis da bolinha
+let xbolinha=300;
+let ybolinha=200;
+let diametro=25;
+
+let velocidadexbolinha=6;
+let velocidadeybolinha=6;
+
+
+//variaveis da raquete
+let xraquetejogador = 5;
+let yraquetejogador = 150;
+let larguraraquetejogador = 10;
+let alturaraquetejogador = 90;
+
+let xraqueteoponente =585;
+let yraqueteoponente =150;
+
+//placar do jogo
+let meuspontos = 0
+let pontosdooponente = 0;
+
+let colidiu =false;
+
+function setup() {
+  createCanvas(600, 400);
+}
+
+function draw() {
+  background("#607D8B");
+  mostrabolinha();
+  movimentabolinha();
+  verificacolisaoborda();
+  mostraraquetejogador();
+  mostraraqueteoponente();
+  movimentaraquetejogador();
+  colisaominharaquete();
+  movimentaraqueteoponente();
+  colisaoraqueteoponente();
+  incluiplacar();
+  marcapontos();
+  
+   
+}
+
+function mostrabolinha(){
+ circle(xbolinha,ybolinha,diametro);
+  fill("rgb(192,211,255)");//preenchimento
+}
+
+function movimentabolinha(){
+  xbolinha = xbolinha + velocidadexbolinha;
+  ybolinha = ybolinha + velocidadeybolinha;
+}
+
+function movimentabolinha(){
+  xbolinha += velocidadexbolinha;
+  ybolinha += velocidadeybolinha;
+}
+function verificacolisaoborda(){
+if (xbolinha > width || xbolinha < 0) {
+  velocidadexbolinha *= -1;
+}
+   if (ybolinha > height || ybolinha < 0) {
+    velocidadeybolinha *= -1;
+  }
+}
+  
+ function mostraraquetejogador() {
+  rect(
+    xraquetejogador,
+    yraquetejogador,
+    larguraraquetejogador,
+    alturaraquetejogador,
+    10
+  );
+}
+
+function mostraraqueteoponente() {
+  rect(
+    xraqueteoponente,
+    yraqueteoponente,
+    larguraraquetejogador,
+    alturaraquetejogador,
+    10
+  );
+}
+
+
+
+
+
+
+function movimentaraquetejogador() {
+  if (keyIsDown(UP_ARROW)) {
+    yraquetejogador -= 10;
+  }
+
+  
+  
+  
+  
+  
+  
+
+  if (keyIsDown(DOWN_ARROW)) {
+    yraquetejogador += 10;
+  }
+}
+
+function colisaominharaquete() {
+  colidiu = collideRectCircle(
+    xraquetejogador,
+    yraquetejogador,
+    larguraraquetejogador,
+    alturaraquetejogador,
+    xbolinha,
+    ybolinha,
+    diametro
+  );
+  if (colidiu == true){
+     velocidadexbolinha *=-1;
+     }
+}
+
+function movimentaraqueteoponente(){
+  velocidadeyoponente = ybolinha -
+    yraqueteoponente - alturaraquetejogador/2 - 30
+  yraqueteoponente += velocidadeyoponente
+  
+}
+
+function colisaoraqueteoponente() {
+  colidiu = collideRectCircle(
+    xraqueteoponente,
+    yraqueteoponente,
+    larguraraquetejogador,
+    alturaraquetejogador,
+    xbolinha,
+    ybolinha,
+    diametro
+  );
+  if (colidiu == true){
+     velocidadexbolinha *=-1;
+     }
+}
+
+
+function incluiplacar() {
+  fill(255);
+  textSize( 20)
+  text(meuspontos, 278, 26);
+  text(pontosdooponente, 321, 26);
+}
+
+function marcapontos() {
+  if (xbolinha > 570) {
+    meuspontos += 1;
+  }
+  }
+  if (xbolinha < 0) {
+    pontosdooponente += 1;
+  }
+function mostraraquetejogador() {
+  rect(
+    xraquetejogador,
+    yraquetejogador,
+    larguraraquetejogador,
+    alturaraquetejogador,
+    10
+  );
+}
+
+function mostraraqueteoponente() {
+  rect(
+    xraqueteoponente,
+    yraqueteoponente,
+    larguraraquetejogador,
+    alturaraquetejogador,
+    10
+  );
+}
+
+
+
+
+
+
+function movimentaraquetejogador() {
+  if (keyIsDown(UP_ARROW)) {
+    yraquetejogador -= 10;
+  }
+
+  
+  
+  
+  
+  
+  
+
+  if (keyIsDown(DOWN_ARROW)) {
+    yraquetejogador += 10;
+  }
+}
+
+function colisaominharaquete() {
+  colidiu = collideRectCircle(
+    xraquetejogador,
+    yraquetejogador,
+    larguraraquetejogador,
+    alturaraquetejogador,
+    xbolinha,
+    ybolinha,
+    diametro
+  );
+  if (colidiu == true){
+     velocidadexbolinha *=-1;
+     }
+}
+
+function movimentaraqueteoponete(){
+  velocidadeyoponente = ybolinha -
+    yraqueteoponente - alturaraquetejogador/2 - 30
+  yraqueteoponente += velocidadeyoponente
+  
+}
+
+function colisaoraqueteoponente() {
+  colidiu = collideRectCircle(
+    xraqueteoponente,
+    yraqueteoponente,
+    larguraraquetejogador,
+    alturaraquetejogador,
+    xbolinha,
+    ybolinha,
+    diametro
+  );
+  if (colidiu == true){
+     velocidadexbolinha *=-1;
+     }
+}
+
+
+function incluiplacar() {
+  fill(255);
+  textSize( 20)
+  text(meuspontos, 278, 26);
+  text(pontosdooponente, 321, 26);
+}
+
+function marcapontos() {
+  if (xbolinha > 570) {
+    meuspontos += 1;
+  }
+  if (xbolinha < 0) {
+    pontosdooponente += 1;
+  }
+}  
